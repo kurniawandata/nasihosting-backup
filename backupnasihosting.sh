@@ -33,19 +33,19 @@ case $choice in
     fi
     ;;   
 
-2)  echo -n "Masukkan nama file backup database yang diinginkan"
+2)  echo -n "Masukkan nama file backup database yang diinginkan : "
     read namadatabase
     tanggal=$(date +%d-%m-%Y)
     mysqldump -u root -ppasswordroot --all-databases > namadatabase.$tanggal.sql
     ;;   
 
-3)  echo -n "Masukkan nama file backup pengguna database yang diinginkan"
+3)  echo -n "Masukkan nama file backup pengguna database yang diinginkan : "
     read namapengguna
     tanggal=$(date +%d-%m-%Y)
     mysqldump -u root -ppasswordroot mysql > pengguna.$tanggal.sql
     ;;   
 
-4)  echo -n "Masukkan nama file backup semua vhost nasihosting"
+4)  echo -n "Masukkan nama file backup semua vhost nasihosting : "
     read namavhost
     tanggal=$(date +%d-%m-%Y)
     tar -zcvf $namavhost.$tanggal.tar.gz /etc/apache2/sites-available/
