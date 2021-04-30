@@ -23,11 +23,11 @@ read -p " Masukkan Nomor Pilihan Anda antara [1 - 5] : " choice;
 echo "";
 case $choice in
 
-1)  echo -n "Masukkan nama file backup semua pengguna yang diinginkan"
+1)  echo -n "Masukkan nama file backup semua pengguna yang diinginkan : "
     read namafile
     tanggal=$(date +%d-%m-%Y)
     if [ -z "$(ls -A /home/*)" ]; then
-    echo "tar -zcvf $namafile.$tanggal.tar.gz /home"
+    tar -zcvf $namafile.$tanggal.tar.gz /home
     else
     echo "Folder /home tidak ada"
     fi
@@ -48,7 +48,7 @@ case $choice in
 4)  echo -n "Masukkan nama file backup semua vhost nasihosting"
     read namavhost
     tanggal=$(date +%d-%m-%Y)
-    echo "tar -zcvf $namavhost.$tanggal.tar.gz /etc/apache2/sites-available/"
+    tar -zcvf $namavhost.$tanggal.tar.gz /etc/apache2/sites-available/
     ;;   
 
 5) exit
