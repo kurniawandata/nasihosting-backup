@@ -26,23 +26,23 @@ case $choice in
 1)  echo -n "Masukkan nama file backup semua pengguna yang diinginkan : "
     read namafile
     tanggal=$(date +%d-%m-%Y)
-    if [ -z "$(ls -A /home/*)" ]; then
     tar -zcvf $namafile.$tanggal.tar.gz /home
-    else
-    echo "Folder /home tidak ada"
-    fi
     ;;   
 
 2)  echo -n "Masukkan nama file backup database yang diinginkan : "
     read namadatabase
+    echo -n "Masukkan password root : "
+    read passdb
     tanggal=$(date +%d-%m-%Y)
-    mysqldump -u root -ppasswordroot --all-databases > namadatabase.$tanggal.sql
+    mysqldump -u root -p$passdb --all-databases > namadatabase.$tanggal.sql
     ;;   
 
 3)  echo -n "Masukkan nama file backup pengguna database yang diinginkan : "
     read namapengguna
+    echo -n "Masukkan password root : "
+    read passdb
     tanggal=$(date +%d-%m-%Y)
-    mysqldump -u root -ppasswordroot mysql > pengguna.$tanggal.sql
+    mysqldump -u root -p$passdb mysql > pengguna.$tanggal.sql
     ;;   
 
 4)  echo -n "Masukkan nama file backup semua vhost nasihosting : "
