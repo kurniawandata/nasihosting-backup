@@ -9,17 +9,19 @@ clear
 echo "=================================================================";
 echo " Nasihosting backup                                              ";
 echo " Progammer : Kurniawan. xcode.or.id                              ";
-echo " Version 1.0 Beta 1 - 30/04/2021                                        ";
+echo " Version 1.0 Beta 2 - 27/08/2021                                 ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 echo " Instalasi                                                       ";
 echo " [1]  Backup semua file pengguna nasihosting                     ";
 echo " [2]  Backup semua database pengguna nasihosting                 ";
 echo " [3]  Backup semua pengguna nasihosting                          ";
 echo " [4]  Backup semua file vhost pengguna nasihosting               ";
+echo " [5]  Backup semua /var/www/html                                 ";
+echo " [6]  Backup semua /etc/apache2/ssl                              ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
-echo " [5] Exit                                                        ";
+echo " [7] Exit                                                        ";
 echo "=================================================================";
-read -p " Masukkan Nomor Pilihan Anda antara [1 - 5] : " choice;
+read -p " Masukkan Nomor Pilihan Anda antara [1 - 7] : " choice;
 echo "";
 case $choice in
 
@@ -51,7 +53,20 @@ case $choice in
     tar -zcvf $namavhost.$tanggal.tar.gz /etc/apache2/sites-available/
     ;;   
 
-5) exit
+5)  echo -n "Masukkan nama file backup semua file /var/www/html : "
+    read namafileutama
+    tanggal=$(date +%d-%m-%Y)
+    tar -zcvf $namafileutama.$tanggal.tar.gz /varwww/html/
+    ;;   
+ 
+6)  echo -n "Masukkan nama file backup semua file SSL /etc/apache2/ssl : "
+    read namafilessl
+    tanggal=$(date +%d-%m-%Y)
+    tar -zcvf $namafilessl.$tanggal.tar.gz /etc/apache2/ssl/
+    ;;   
+
+
+7) exit
     ;;
 *)    echo "Maaf, menu tidak ada"
 esac
