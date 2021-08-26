@@ -56,7 +56,7 @@ case $choice in
 5)  echo -n "Masukkan nama file backup semua file /var/www/html : "
     read namafileutama
     tanggal=$(date +%d-%m-%Y)
-    tar -zcvf $namafileutama.$tanggal.tar.gz /varwww/html/
+    tar -zcvf $namafileutama.$tanggal.tar.gz /var/www/html/
     ;;   
  
 6)  echo -n "Masukkan nama file backup semua file SSL /etc/apache2/ssl : "
