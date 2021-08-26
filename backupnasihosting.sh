@@ -65,7 +65,6 @@ case $choice in
     tar -zcvf $namafilessl.$tanggal.tar.gz /etc/apache2/ssl/
     ;;   
 
-
 7) exit
     ;;
 *)    echo "Maaf, menu tidak ada"
