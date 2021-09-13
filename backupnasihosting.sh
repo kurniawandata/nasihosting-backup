@@ -9,7 +9,7 @@ clear
 echo "=================================================================";
 echo " Nasihosting backup                                              ";
 echo " Progammer : Kurniawan. xcode.or.id                              ";
-echo " Version 1.0 Beta 2 - 27/08/2021                                 ";
+echo " Version 1.0 Beta 3 - 13/09/2021                                 ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
 echo " Instalasi                                                       ";
 echo " [1]  Backup semua file pengguna nasihosting                     ";
@@ -18,10 +18,11 @@ echo " [3]  Backup semua pengguna nasihosting                          ";
 echo " [4]  Backup semua file vhost pengguna nasihosting               ";
 echo " [5]  Backup semua /var/www/html                                 ";
 echo " [6]  Backup semua /etc/apache2/ssl                              ";
+echo " [7]  Backup semua file /usr/lib/cgi-bin                         ";
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
-echo " [7] Exit                                                        ";
+echo " [8] Exit                                                        ";
 echo "=================================================================";
-read -p " Masukkan Nomor Pilihan Anda antara [1 - 7] : " choice;
+read -p " Masukkan Nomor Pilihan Anda antara [1 - 8] : " choice;
 echo "";
 case $choice in
 
@@ -36,7 +37,7 @@ case $choice in
     echo -n "Masukkan password root : "
     read passdb
     tanggal=$(date +%d-%m-%Y)
-    mysqldump -u root -p$passdb --all-databases > namadatabase.$tanggal.sql
+    mysqldump -u root -p$passdb --all-databases > $namadatabase.$tanggal.sql
     ;;   
 
 3)  echo -n "Masukkan nama file backup pengguna database yang diinginkan : "
@@ -44,7 +45,7 @@ case $choice in
     echo -n "Masukkan password root : "
     read passdb
     tanggal=$(date +%d-%m-%Y)
-    mysqldump -u root -p$passdb mysql > pengguna.$tanggal.sql
+    mysqldump -u root -p$passdb mysql > $pengguna.$tanggal.sql
     ;;   
 
 4)  echo -n "Masukkan nama file backup semua vhost nasihosting : "
@@ -65,7 +66,13 @@ case $choice in
     tar -zcvf $namafilessl.$tanggal.tar.gz /etc/apache2/ssl/
     ;;   
 
-7) exit
+7)  echo -n "Masukkan nama file backup semua file cgi-bin /usr/lib/cgi-bin : "
+    read namacgi
+    tanggal=$(date +%d-%m-%Y)
+    tar -zcvf $namacgi.$tanggal.tar.gz /usr/lib/cgi-bin
+    ;;   
+
+8) exit
     ;;
 *)    echo "Maaf, menu tidak ada"
 esac
