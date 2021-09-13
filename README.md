@@ -1,4 +1,4 @@
-Nasihosting Backup v1.0 - Beta 2 (27 Agustus 2021)
+Nasihosting Backup v1.0 - Beta 3 (13 September 2021)
 --------------------
 ![alt text](http://xcode.or.id/04_small-logo.png)
 
