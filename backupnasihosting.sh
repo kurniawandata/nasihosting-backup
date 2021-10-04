@@ -45,7 +45,7 @@ case $choice in
     echo -n "Masukkan password root : "
     read passdb
     tanggal=$(date +%d-%m-%Y)
-    mysqldump -u root -p$passdb mysql > $pengguna.$tanggal.sql
+    mysqldump -u root -p$passdb mysql > $namapengguna.$tanggal.sql
     ;;   
 
 4)  echo -n "Masukkan nama file backup semua vhost nasihosting : "
